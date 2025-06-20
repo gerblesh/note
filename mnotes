@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+EDITOR_WRAPPER="$PWD/editor-typst" FILTER="*.typst" ./notes

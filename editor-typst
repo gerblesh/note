@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+
+FILE="$1"
+
+DIR="$(dirname "$FILE")"
+
+PDF="$(basename $FILE).pdf"
+
+if [ ! -d "$DIR" ]; then
+  mkdir -p "$DIR"
+fi
+
+touch "$FILE"
+
+Z_PID=""
+T_PID=""
+
+watch_typst() {
+  while true; do
+    typst watch "$FILE" >/dev/null 2>&1 &
+    T_PID=$!
+    wait $T_PID || echo "typst crashed, restarting..."
+    sleep 1
+  done
+}
+
+watch_zathura() {
+  while true; do
+    zathura "$PDF" >/dev/null 2>&1 &
+    Z_PID=$!
+    wait $Z_PID || echo "zathura crashed, restarting..."
+    sleep 1
+  done
+}
+
+cleanup() {
+  echo "Cleaning up..."
+  [[ -n "${T_WATCHER_PID:-}" ]] && kill "$T_WATCHER_PID" 2>/dev/null || true
+  [[ -n "${Z_WATCHER_PID:-}" ]] && kill "$Z_WATCHER_PID" 2>/dev/null || true
+
+  [[ -n "${T_PID:-}" ]] && kill "$T_PID" 2>/dev/null || true
+  [[ -n "${Z_PID:-}" ]] && kill "$Z_PID" 2>/dev/null || true
+}
+trap cleanup EXIT INT TERM
+
+watch_typst &
+T_WATCHER_PID=$!
+
+watch_zathura &
+Z_WATCHER_PID=$!
+
+"$EDITOR" "$FILE"
+
+pkill -P $$
+
