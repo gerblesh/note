@@ -15,10 +15,8 @@ script for overviewing math notes (mnotes)
 Since these scripts are "stupid", use env vars:
 
 ```bash
-# use your shell config, .profile, or whatever to set these env vars
-NOTE_PICKER="fzf"
+# use your shell config, .profile, or whatever to set your editor
 EDITOR="hx"
-NOTE_FZF_PREVIEW='bat --color=always {}'
 # alias for specific persistent notes (E.G. a todo note)
 alias todo='note todo'
 # that's it. You can stop reading now.
