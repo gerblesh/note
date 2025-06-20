@@ -6,10 +6,10 @@ if you don't care about where, how, who, what, why, or when your notes program i
 
 
 # Included
-script for math notes in typst (opens zathura, your editor, and the typst compiler automagically 🤯)
-script for just notes in markdown (no preview)
-script for overviewing notes (notes)
-script for overviewing math notes (mnotes)
+- script for math notes in typst (opens zathura, your editor, and the typst compiler automagically 🤯)
+- script for just notes in markdown (no preview)
+- script for overviewing notes (notes)
+- script for overviewing math notes (mnotes)
 
 # Configuration
 Since these scripts are "stupid", use env vars:
