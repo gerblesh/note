@@ -6,7 +6,7 @@ if you don't care about where, how, who, what, why, or when your notes program i
 
 
 # Included
-- script for math notes in typst (opens zathura, your editor, and the typst compiler automagically 🤯)
+- script for math notes in typst (helix handles zathura and compilation using tinymist)
 - script for just notes in markdown (no preview)
 - script for overviewing notes (notes)
 - script for overviewing math notes (mnotes)
@@ -23,4 +23,4 @@ alias todo='note todo'
 ```
 
 # Scope
-anything that can be kept to simple bash really, if you have improvements for the process handling particularly with editor-typst and mnote(s) that would be great. Stuff like a tagging system or backlinks, fancy node graphs, and whatnot are not what I made this for, use obsidian or some fancy notes plugin in your editor if you want that functionality.
+Anything that fits in the bash script, my usecase is already covered
