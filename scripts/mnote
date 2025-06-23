@@ -13,4 +13,4 @@ else
   printf -v FILE '%s/%(journal/math/%Y/%m/%d/note.typst)T' "$HOME"
 fi
 
-editor-typst "$FILE"
+$EDITOR "$FILE"
